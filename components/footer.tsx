@@ -8,7 +8,7 @@ export default function Footer() {
           <Link href="/">
             <h2 className="text-4xl">Petite Curio Boutique</h2>
           </Link>
-          <p>We're a small business based in Arizona. We spend time scouring the state to procure one of a kind, funky, vintage pieces. We also like to dabble in the handmade arts and make anything from wall decor to our comically morbid tea cups. Feel free to look around and reach out on our contact us page if you have any questions. Cheers!</p>
+          <p>We&apos;re a small business based in Arizona. We spend time scouring the state to procure one of a kind, funky, vintage pieces. We also like to dabble in the handmade arts and make anything from wall decor to our comically morbid tea cups. Feel free to look around and reach out on our contact us page if you have any questions. Cheers!</p>
         </main>
         <nav className="flex flex-col flex-wrap gap-y-2">
           <Link href="/" className="flex gap-1 group max-w-fit">
