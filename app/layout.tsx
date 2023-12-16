@@ -1,8 +1,10 @@
 import "@/css/globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { cookies } from "next/headers";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { ClientCookiesProvider } from "@/components/cookie-provider";
 
 const url = "https://www.petitecurioboutique.com";
 const title = "Petite Curio Boutique";
@@ -182,7 +184,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html className={`scroll-smooth bg-[#2c2c2c] selection:bg-yellow-500 ${Chanticleer.className} ${Huntsman.variable}`} lang={locale}>
       <body className="flex flex-col min-h-screen text-white text-lg">
         <Header />
-        {children}
+        <ClientCookiesProvider value={cookies().getAll()}>
+          {children}
+        </ClientCookiesProvider>
         <Footer />
       </body>
     </html>

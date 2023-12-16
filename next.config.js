@@ -34,6 +34,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/checkout",
+        destination: "/shop/checkout",
+        permanent: true,
+      },
+      {
         source: "/legal",
         destination: "/#legal",
         permanent: true,
