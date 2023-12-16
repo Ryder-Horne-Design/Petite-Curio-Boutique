@@ -6,7 +6,7 @@ import ProductElement from "./product-element";
 export default function Page({params}: {params: {
   id: string,
 }}) {
-  return fetch(`/api/product-information?product=prod_${params.id}`).then(function(ProductResponse) {
+  return fetch(`https://petite-curio-boutique.vercel.app/api/product-information?product=prod_${params.id}`).then(function(ProductResponse) {
     if (ProductResponse.ok) {
       return ProductResponse.json().then(function(Product: Stripe.Product) {
         return <ProductElement id={params.id} name={Product.name} description={Product.description || "No description provided."} active={Product.active} stock={Product.metadata.Stock} image0={Product.images[0]} />;
