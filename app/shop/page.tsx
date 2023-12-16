@@ -51,7 +51,9 @@ export default function Page() {
         <p ref={SearchInfoRef} className="hidden"></p>
       </section>
       <main className="grid sm:grid-cols-2 lg:grid-cols-4 px-4 justify-center text-center gap-2 mb-4">
-        <Suspense>
+        <Suspense fallback={
+          <p>Loading products...</p>
+        }>
           {
             fetch("/api/products").then(async function(Response) {
               if (Response.ok) {
