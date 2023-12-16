@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font);
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  .shop-bg-image {
+    background-image: url("/images/shop.png");
+  }
+  .stem-offset {
+    stroke-dashoffset: 20;
+  }
+}
