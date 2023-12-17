@@ -75,7 +75,6 @@ export default function ProductElement({id, name, description, active, stock, im
       InfoRef.current!.classList.remove("text-red-500", "text-green-500", "text-yellow-500");
       const Cart = JSON.parse(CookieStore.get("Cart") || "{}");
       const TrueAmount = Amount + (Cart[id] || 0);
-      console.log(TrueAmount)
       if (TrueAmount < 99 && TrueAmount < stock) {
         SetAmount(Amount + 1);
       } else {
