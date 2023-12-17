@@ -76,7 +76,7 @@ export default function Page() {
               default_price: string,
             }) {
               if (Product.active) {
-                const PriceResponse = await fetch(`http://localhost:3000/api/price-information?price=${Product.default_price}`)
+                const PriceResponse = await fetch(`https://petite-curio-boutique.vercel.app/api/price-information?price=${Product.default_price}`)
                 const PriceInformation: {
                   unit_amount: number,
                 } = PriceResponse ? await PriceResponse.json() : {unit_amount: 500};
