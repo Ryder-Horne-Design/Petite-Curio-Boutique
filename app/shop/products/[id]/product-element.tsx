@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { type MouseEvent, createRef, useState } from "react";
 import { createRoot } from "react-dom/client";
-import type Stripe from "stripe";
 
 export default function ProductElement({id, name, description, active, stock, image0}: {
   id: string,

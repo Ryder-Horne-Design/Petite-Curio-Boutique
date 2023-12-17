@@ -2,14 +2,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { Suspense, createRef } from "react";
-import type Stripe from "stripe";
+import { Suspense, createRef, useEffect, useState } from "react";
 
 export default function Page() {
   const Router = useRouter();
   const Query = useSearchParams();
   const Pathname = usePathname();
   const SearchInfoRef = createRef<HTMLParagraphElement>();
+
+  const [Products, SetProducts] = useState([]);
+
+  useEffect(function() {
+    fetch("http://localhost:3000/api/products").then(async function(response) {
+      if (response.ok) {
+        const Products = await response.json();
+        SetProducts(Products.data);
+      };
+    });
+  }, []);
   
   return (
     <main>
@@ -52,43 +62,38 @@ export default function Page() {
       </section>
       <main className="grid sm:grid-cols-2 lg:grid-cols-4 px-4 justify-center text-center gap-2 mb-4">
         <Suspense fallback={
-          <p>Loading products...</p>
+          <p className="text-xl">Loading products...</p>
         }>
           {
-            fetch("/api/products").then(async function(Response) {
-              if (Response.ok) {
-                const Products: {
-                  data: Stripe.Product[]
-                } = await Response.json();
-                return Products.data.map(async function(Product) {
-                  if (Product.active) {
-                    const PriceResponse = await fetch(`/api/price-information?price=${Product.default_price}`)
-                    const PriceInformation: Stripe.Response<Stripe.Price> = PriceResponse ? await PriceResponse.json() : {unit_amount: 500};
-                    const UnitAmount = PriceInformation.unit_amount!.toString();
-                    return (
-                      <Link href={`/shop/products/${Product.id.replace("prod_", "")}`} key={Product.id.replace("prod_", "")}>
-                        <header className="flex flex-col flex-wrap justify-center items-center gap-y-2">
-                          <Image src={Product.images[0]} alt={`Image for ${Product.name}`} width={250} height={250} className="rounded-2xl object-cover max-h-56"></Image>
-                          <h3 className="text-3xl px-2">{Product.name}</h3>
-                        </header>
-                        <main>
-                          <p>{`$${PriceInformation.unit_amount! >= 100 ? UnitAmount.slice(0, UnitAmount.length - 2) + "." + UnitAmount.slice(UnitAmount.length - 2, UnitAmount.length) : "0." + UnitAmount}`}</p>
-                          {parseInt(Product.metadata.Stock) <= 3 ? <p className="text-red-600">{`${Product.metadata.Stock} in stock`}</p> : ""}
-                        </main>
-                      </Link>
-                    );
-                  };
-                });
-              } else {
+            Products.map(async function(Product: {
+              active: boolean,
+              id: string,
+              images: string[],
+              name: string,
+              metadata: {
+                Stock: string,
+              },
+              default_price: string,
+            }) {
+              if (Product.active) {
+                const PriceResponse = await fetch(`http://localhost:3000/api/price-information?price=${Product.default_price}`)
+                const PriceInformation: {
+                  unit_amount: number,
+                } = PriceResponse ? await PriceResponse.json() : {unit_amount: 500};
+                const UnitAmount = PriceInformation.unit_amount!.toString();
                 return (
-                  <p className="text-xl">There was an error loading the products. Please try again or contact support if the issue persists.</p>
-                );  
+                  <Link href={`/shop/products/${Product.id.replace("prod_", "")}`} key={Product.id.replace("prod_", "")}>
+                    <header className="flex flex-col flex-wrap justify-center items-center gap-y-2">
+                      <Image src={Product.images[0]} alt={`Image for ${Product.name}`} width={250} height={250} className="rounded-2xl object-cover max-h-56"></Image>
+                      <h3 className="text-3xl px-2">{Product.name}</h3>
+                    </header>
+                    <main>
+                      <p>{`$${PriceInformation.unit_amount! >= 100 ? UnitAmount.slice(0, UnitAmount.length - 2) + "." + UnitAmount.slice(UnitAmount.length - 2, UnitAmount.length) : "0." + UnitAmount}`}</p>
+                      {parseInt(Product.metadata.Stock) <= 3 ? <p className="text-red-600">{`${Product.metadata.Stock} in stock`}</p> : ""}
+                    </main>
+                  </Link>
+                );
               };
-            }).catch(function(Err) {
-              console.warn(Err);
-              return (
-                <p className="text-xl">There was an error loading the products. Please try again or contact support if the issue persists.</p>
-              );
             })
           }
         </Suspense>
