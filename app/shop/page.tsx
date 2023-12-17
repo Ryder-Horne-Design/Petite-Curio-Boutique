@@ -13,7 +13,7 @@ export default function Page() {
   const [Products, SetProducts] = useState([]);
 
   useEffect(function() {
-    fetch("http://localhost:3000/api/products").then(async function(response) {
+    fetch("https://petite-curio-boutique.vercel.app/api/products").then(async function(response) {
       if (response.ok) {
         const Products = await response.json();
         SetProducts(Products.data);
