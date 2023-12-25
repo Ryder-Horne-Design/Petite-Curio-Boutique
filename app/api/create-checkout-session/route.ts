@@ -33,7 +33,7 @@ export async function POST(Request: NextRequest) {
               const PackageData = PackageRates[Body.Shipping.Country === "US" ? "RateV4Request" : "IntlRateV2Response"][Package];
               if (Body.Shipping.Country === "US") {
                 
-              }
+              };
             };
             ItemsData.length = 0;
             AmountRated += 1;
