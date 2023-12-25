@@ -11,16 +11,17 @@ export default function Page() {
   const SearchInfoRef = createRef<HTMLParagraphElement>();
 
   const [Products, SetProducts] = useState([]);
+  let Elements = 0;
 
   useEffect(function() {
-    fetch("https://petite-curio-boutique.vercel.app/api/products").then(async function(response) {
-      if (response.ok) {
-        const Products = await response.json();
+    fetch("https://petite-curio-boutique.vercel.app/api/products").then(async function(Response) {
+      if (Response.ok) {
+        const Products = await Response.json();
         SetProducts(Products.data);
       };
     });
   }, []);
-  
+
   return (
     <main>
       <header className="relative text-center before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:h-full before:w-full before:-z-[1] before:shop-bg-image before:brightness-50 p-4 min-[300px]:p-12 md:p-24">
@@ -74,8 +75,12 @@ export default function Page() {
                 Stock: string,
               },
               default_price: string,
-            }) {
-              if (Product.active) {
+            }, Index: number) {
+              if (Index === 0) {
+                Elements = 0;
+              };
+              if (Product.active && (!Query.has("search") || Product.name.toLowerCase().includes(Query.get("search")!.toLowerCase()))) {
+                Elements++;
                 const PriceResponse = await fetch(`https://petite-curio-boutique.vercel.app/api/price-information?price=${Product.default_price}`)
                 const PriceInformation: {
                   unit_amount: number,
@@ -84,7 +89,7 @@ export default function Page() {
                 return (
                   <Link href={`/shop/products/${Product.id.replace("prod_", "")}`} key={Product.id.replace("prod_", "")}>
                     <header className="flex flex-col flex-wrap justify-center items-center gap-y-2">
-                      <Image src={Product.images[0]} alt={`Image for ${Product.name}`} width={250} height={250} className="rounded-2xl object-cover max-h-56"></Image>
+                      <Image src={Product.images[0]} alt={`Image for ${Product.name}`} width={250} height={250} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="rounded-2xl object-cover max-h-56"></Image>
                       <h3 className="text-3xl px-2">{Product.name}</h3>
                     </header>
                     <main>
@@ -92,6 +97,10 @@ export default function Page() {
                       {parseInt(Product.metadata.Stock) <= 3 ? <p className="text-red-600">{`${Product.metadata.Stock} in stock`}</p> : ""}
                     </main>
                   </Link>
+                );
+              } else if (Index === Products.length - 1 && Elements === 0) {
+                return (
+                  <p className="text-xl">No products found.</p>
                 );
               };
             })

@@ -57,23 +57,20 @@ export default function Layout({children, params}: {children: React.ReactNode, p
   metadata.alternates.languages.en = `/shop/products/${params.id}`;
   // metadata.alternates.languages.fr = `/fr/shop/products/${params.id}`;
 
-  fetch(`http://localhost:3000/api/product-information?product=prod_${params.id}`).then(function(ProductResponse) {
+  fetch(`https://petite-curio-boutique.vercel.app/api/product-information?product=prod_${params.id}`).then(function(ProductResponse) {
     if (ProductResponse.ok) {
       ProductResponse.json().then(function(Product) {
         if (Product.active) {
-          metadata.title = Product.name;
-          metadata.twitter.title = metadata.openGraph.title = `${Product.name} - Petite Curio Boutique`;
+          metadata.title = metadata.twitter.title = metadata.openGraph.title = `${Product.name} - Petite Curio Boutique`;
           metadata.description = metadata.twitter.description = metadata.openGraph.description = Product.description || "No description provided.";
         } else {
-          metadata.title = "Error Finding Product";
-          metadata.twitter.title = metadata.openGraph.title = "Error Finding Product - Petite Curio Boutique";
+          metadata.title = metadata.twitter.title = metadata.openGraph.title = "Error Finding Product - Petite Curio Boutique";
           metadata.description = metadata.twitter.description = metadata.openGraph.description = "Error Finding Product";
           metadata.robots.index = false;
         };
       });
     } else {
-      metadata.title = "Error Finding Product";
-      metadata.twitter.title = metadata.openGraph.title = "Error Finding Product - Petite Curio Boutique";
+      metadata.title = metadata.twitter.title = metadata.openGraph.title = "Error Finding Product - Petite Curio Boutique";
       metadata.description = metadata.twitter.description = metadata.openGraph.description = "Error Finding Product";
       metadata.robots.index = false;
     };

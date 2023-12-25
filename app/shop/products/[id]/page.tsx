@@ -1,6 +1,6 @@
 "use client";
 import type Stripe from "stripe";
-import ProductElement from "./product-element";
+import ProductElement from "../../product-element";
 import { Suspense, useEffect, useState } from "react";
 import LinkButton from "@/components/link-button";
 import Link from "next/link";
@@ -9,15 +9,22 @@ export default function Page({params}: {params: {
   id: string,
 }}) {
   const [Product, SetProduct] = useState<Stripe.Product>();
+  const [UnitAmount, SetUnitAmount] = useState("");
 
   useEffect(function() {
     fetch(`https://petite-curio-boutique.vercel.app/api/product-information?product=prod_${params.id}`).then(async function(ProductResponse) {
       if (ProductResponse.ok) {
         const Product = await ProductResponse.json();
         SetProduct(Product);
+        fetch(`https://petite-curio-boutique.vercel.app/api/price-information?price=${Product!.default_price}`).then(async function(PriceResponse) {
+          if (PriceResponse.ok) {
+            const Price = await PriceResponse.json();
+            SetUnitAmount(Price.unit_amount.toString());
+          };
+        });
       };
     });
-  });
+  }, [params.id]);
 
   if (!Product) {
     return (
@@ -37,7 +44,7 @@ export default function Page({params}: {params: {
       <p>Loading product...</p>
     }>
       {
-        Product ? <ProductElement id={params.id} name={Product.name} description={Product.description || "No description provided."} active={Product.active} stock={Product.metadata.Stock} image0={Product.images[0]} /> : <main className="flex flex-col flex-wrap justify-center items-center before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:h-full before:w-full before:-z-[1] before:shop-bg-image before:brightness-50 text-center p-4 min-[300px]:p-12 md:p-24">
+        Product ? <ProductElement id={params.id} name={Product.name} description={Product.description || "No description provided."} active={Product.active} stock={Product.metadata.Stock} image0={Product.images[0]} price={parseInt(UnitAmount)! >= 100 ? parseFloat(UnitAmount.slice(0, UnitAmount.length - 2) + "." + UnitAmount.slice(UnitAmount.length - 2, UnitAmount.length)) : parseFloat("0." + UnitAmount)} /> : <main className="flex flex-col flex-wrap justify-center items-center before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:h-full before:w-full before:-z-[1] before:shop-bg-image before:brightness-50 text-center p-4 min-[300px]:p-12 md:p-24">
           <h2 className="text-4xl mb-4">Product Not Found</h2>
           <p className="mb-2">We&apos;re awfully sorry, but it seems like we could not find that product. Please try again later.</p>
           <p className="mb-4">If you think this is a mistake, please <Link href="/contact-us" className="text-yellow-500">contact us</Link> with information about the product you were trying to find. Thank you!</p>
