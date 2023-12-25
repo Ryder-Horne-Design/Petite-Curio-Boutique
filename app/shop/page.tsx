@@ -100,7 +100,7 @@ export default function Page() {
                 );
               } else if (Index === Products.length - 1 && Elements === 0) {
                 return (
-                  <p className="text-xl">No products found.</p>
+                  <p className="text-xl" key={Product.id.replace("prod_", "")}>No products found.</p>
                 );
               };
             })

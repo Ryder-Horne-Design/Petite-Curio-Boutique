@@ -43,7 +43,7 @@ export default function Page() {
           {
             CookieStore.get("Cart") && Object.keys(JSON.parse(CookieStore.get("Cart")!)).length > 0 ? Object.keys(JSON.parse(CookieStore.get("Cart")!)).map(async function(Id: string, Index: number) {
               if (Product && UnitAmount.length > 0) {
-                return <ProductElement id={Id} name={Product.name} description={Product.description || "No description provided."} active={Product.active} stock={Product.metadata.Stock} image0={Product.images[0]} price={parseInt(UnitAmount)! >= 100 ? parseFloat(UnitAmount.slice(0, UnitAmount.length - 2) + "." + UnitAmount.slice(UnitAmount.length - 2, UnitAmount.length)) : parseFloat("0." + UnitAmount)} deleteButton />
+                return <ProductElement id={Id} name={Product.name} description={Product.description || "No description provided."} active={Product.active} stock={Product.metadata.Stock} image0={Product.images[0]} price={parseInt(UnitAmount)! >= 100 ? parseFloat(UnitAmount.slice(0, UnitAmount.length - 2) + "." + UnitAmount.slice(UnitAmount.length - 2, UnitAmount.length)) : parseFloat("0." + UnitAmount)} deleteButton key={Id} />
               } else if (ProductId !== Id) {
                 SetProductId(Id);
               };

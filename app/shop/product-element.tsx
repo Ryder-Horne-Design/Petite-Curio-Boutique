@@ -90,7 +90,7 @@ export default function ProductElement({id, name, description, active, stock, im
   if (active) {
     if (!deleteButton) {
       return (
-        <main key={id}>
+        <main>
           <header className="relative text-center before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:h-full before:w-full before:-z-[1] before:shop-bg-image before:brightness-50 p-4 min-[300px]:p-12 md:p-24">
             <h1 className="text-7xl">Shop</h1>
           </header>
@@ -132,7 +132,7 @@ export default function ProductElement({id, name, description, active, stock, im
       );
     } else {
       return (
-        <section className="flex flex-col flex-wrap md:flex-row md:flex-nowrap justify-center items-center gap-x-12" key={id}>
+        <section className="flex flex-col flex-wrap md:flex-row md:flex-nowrap justify-center items-center gap-x-12">
           <button className="w-3/4 md:w-1/2 h-full" onClick={ExpandImage}>
             <Image src={image0} alt={`Image of ${name}`} width={640} height={640} sizes="(min-width: 768px) 50vw, 100vw" className="rounded-2xl object-cover w-full h-full" priority></Image>
           </button>
