@@ -43,8 +43,19 @@ const nextConfig = {
         destination: "/#legal",
         permanent: true,
       },
+      {
+        source: "/shop/purchase-successful",
+        destination: "/shop/checkout?purchase=true",
+        permanent: true,
+      },
+      {
+        source: "/shop/purchase-canceled",
+        destination: "/shop/checkout?purchase=false",
+        permanent: true,
+      },
     ];
   },
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig

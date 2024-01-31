@@ -1,6 +1,6 @@
 const url = "https://www.petitecurioboutique.com";
-const title = "Checkout";
-const description = "Checkout your vintage items here.";
+const title = "Terms and Conditions";
+const description = "Learn about the terms and conditions of using and purchasing products on our website.";
 const locale = "en";
 export const metadata = {
   metadataBase: new URL(url),
@@ -38,11 +38,15 @@ export const metadata = {
     creatorId: "1685799534482636801",
   },
   alternates: {
-    canonical: "/shop/checkout",
+    canonical: "/legal/privacy-policy",
     languages: {
-      "en": "/shop/checkout",
-      // "fr": "/fr/shop/checkout",
+      "en": "/legal/privacy-policy",
+      // "fr": "/fr/legal/privacy-policy",
     },
+  },
+  robots: {
+    index: false,
+    follow: true,
   },
 };
 

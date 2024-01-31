@@ -1,10 +1,9 @@
 import "@/css/globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { cookies } from "next/headers";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { ClientCookiesProvider } from "@/components/cookie-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const url = "https://www.petitecurioboutique.com";
 const title = "Petite Curio Boutique";
@@ -179,14 +178,13 @@ const Chanticleer = localFont({
   fallback: ["Times New Roman", "Times", "serif"],
   src: "../public/fonts/Chanticleer\ Roman\ NF.ttf",
 });
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className={`scroll-smooth bg-[#2c2c2c] selection:bg-yellow-500 ${Chanticleer.className} ${Huntsman.variable}`} lang={locale}>
+    <html className={`scroll-smooth bg-[#2c2c2c] selection:bg-yellow-500/50 ${Chanticleer.className} ${Huntsman.variable}`} lang={locale}>
       <body className="flex flex-col min-h-screen text-white text-lg">
         <Header />
-        <ClientCookiesProvider value={cookies().getAll()}>
-          {children}
-        </ClientCookiesProvider>
+        {children}
+        <Toaster />
         <Footer />
       </body>
     </html>
