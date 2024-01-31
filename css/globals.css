@@ -13,6 +13,9 @@
   .shop-bg-image {
     background-image: url("/images/shop.png");
   }
+  .contact-bg-image {
+    background-image: url("/images/contact.png");
+  }
   .stem-offset {
     stroke-dashoffset: 20;
   }

@@ -11,3 +11,8 @@ export async function CreateCheckoutSession(Input: typeof api.stripeRouter.creat
   const Response = await api.stripeRouter.createCheckoutSession.query(Input);
   return Response;
 };
+
+export async function SendEmail(Input: typeof api.emailRouter.sendEmail.query.arguments) {
+  const Response = await api.emailRouter.sendEmail.query(Input);
+  return Response;
+};

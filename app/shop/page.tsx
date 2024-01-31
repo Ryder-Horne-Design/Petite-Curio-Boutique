@@ -62,5 +62,5 @@ export default async function Page({ searchParams }: {
         </Suspense>
       </main>
     </main>
-  )
+  );
 };
