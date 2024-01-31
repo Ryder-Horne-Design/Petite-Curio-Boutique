@@ -27,29 +27,29 @@ export default function ProductElement({ product, price, original = 1, button }:
   const InfoRef = createRef<HTMLParagraphElement>();
   const [Amount, SetAmount] = useState<number>(original);
 
+  const ProductFormSchema = z.object({
+    amount: z.string({
+      required_error: "You must have an amount to add to your cart.",
+    }).refine(function(Value) {
+      return button = "delete" || parseInt(Value) >= 1;
+    }, {
+      message: "You cannot add less than 1 of this item to your cart.",
+    }).refine(function(Value) {
+      return button = "delete" || parseInt(Value) <= (parseInt(Product.metadata.Stock) < 100 ? parseInt(Product.metadata.Stock) : 100);
+    }, {
+      message: "You cannot add more than the avaiable stock of this item to your cart.",
+    }).default(original.toString()),
+  });
+  const ProductForm = useForm<z.infer<typeof ProductFormSchema>>({
+    resolver: zodResolver(ProductFormSchema),
+    defaultValues: {
+      amount: original.toString(),
+    },
+  });
+
   if (Product.active && PriceInformation && original > 0) {
     const UnitAmount = PriceInformation.unit_amount!.toString();
     const Price = parseFloat(PriceInformation.unit_amount! >= 100 ? UnitAmount.slice(0, UnitAmount.length - 2) + "." + UnitAmount.slice(UnitAmount.length - 2, UnitAmount.length) : "0." + UnitAmount);
-
-    const ProductFormSchema = z.object({
-      amount: z.string({
-        required_error: "You must have an amount to add to your cart.",
-      }).refine(function(Value) {
-        return button = "delete" || parseInt(Value) >= 1;
-      }, {
-        message: "You cannot add less than 1 of this item to your cart.",
-      }).refine(function(Value) {
-        return button = "delete" || parseInt(Value) <= (parseInt(Product.metadata.Stock) < 100 ? parseInt(Product.metadata.Stock) : 100);
-      }, {
-        message: "You cannot add more than the avaiable stock of this item to your cart.",
-      }).default(original.toString()),
-    });
-    const ProductForm = useForm<z.infer<typeof ProductFormSchema>>({
-      resolver: zodResolver(ProductFormSchema),
-      defaultValues: {
-        amount: original.toString(),
-      },
-    });
 
     const AddToCart = function(Data: z.infer<typeof ProductFormSchema>) {
       if (InfoRef.current) {

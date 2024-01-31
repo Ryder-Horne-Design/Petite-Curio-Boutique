@@ -58,7 +58,7 @@ async function ServerCheckoutForm() {
     Total += parseFloat(Price.unit_amount! >= 100 ? UnitAmount.slice(0, UnitAmount.length - 2) + "." + UnitAmount.slice(UnitAmount.length - 2, UnitAmount.length) : "0." + UnitAmount) * Quantity;
   };
 
-  return ([<p className="text-2xl text-center">{`Subtotal: $${Total.toFixed(2)}`}</p>, <CheckoutForm items={ProductData} measurements={Measurements} total={parseFloat(Total.toFixed(2))} />]);
+  return ([<p className="text-2xl text-center" key="subtotal">{`Subtotal: $${Total.toFixed(2)}`}</p>, <CheckoutForm items={ProductData} measurements={Measurements} total={parseFloat(Total.toFixed(2))} key="checkout-form" />]);
 };
 
 export default function Page() {
@@ -77,7 +77,7 @@ export default function Page() {
             CookieStore.get("Cart")?.value && Object.keys(JSON.parse(CookieStore.get("Cart")!.value)).length > 0 ? Object.keys(JSON.parse(CookieStore.get("Cart")!.value)).map(function(Id: string, Index: number) {
               const Quantity = JSON.parse(CookieStore.get("Cart")!.value)[Id];
               if (Index === Object.keys(JSON.parse(CookieStore.get("Cart")!.value)).length - 1) {
-                return ([<ServerProductElement id={Id} original={Quantity} key={Id} />, <ServerCheckoutForm />]);
+                return ([<ServerProductElement id={Id} original={Quantity} key={Id} />, <ServerCheckoutForm key="server-checkout-form" />]);
               };
               return <ServerProductElement id={Id} original={Quantity} key={Id} />;
             }) : <>

@@ -40,7 +40,7 @@ export default function SearchForm() {
                 <FormControl>
                   <Input placeholder="Your search" {...field} />
                 </FormControl>
-                <FormDescription>The name of the product you're searching for.</FormDescription>
+                <FormDescription>The name of the product you&apos;re searching for.</FormDescription>
                 <FormMessage />
               </FormItem>
             )} />

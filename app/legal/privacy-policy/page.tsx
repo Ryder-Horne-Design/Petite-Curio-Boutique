@@ -21,7 +21,7 @@ export default async function Page() {
           <h3 className="text-xl">2.1 Order Processing:</h3>
           <p>We use your personal information to process your orders, communicate with you about your purchase, and provide customer support.</p>
           <h3 className="text-xl">2.2 Improving Our Services:</h3>
-          <p>We may analyze non-personal information to improve our website's functionality, troubleshoot issues, and enhance the user experience.</p>
+          <p>We may analyze non-personal information to improve our website&apos;s functionality, troubleshoot issues, and enhance the user experience.</p>
         </section>
         <section>
           <h2 className="text-3xl">3. Sharing Your Information</h2>

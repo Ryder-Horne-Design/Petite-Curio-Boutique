@@ -19,7 +19,7 @@ export default function Home() {
             <Image src="/images/author.jpeg" alt="Picture of the owner of Petite Curio Boutique, Lucia Williams, at the beach" width={1125} height={1125} sizes="(min-width: 640px) 40vw, 80vw" className="rounded-xl max-h-[50%]" />
             <main>
               <h3 className="text-2xl">Who are We?</h3>
-              <p>We're a small business based in Arizona. We spend time scouring the state to procure one of a kind, funky, vintage pieces. We also like to dabble in the handmade arts and make anything from wall decor to our comically morbid tea cups. Feel free to look around and reach out on our contact us page if you have any questions. Cheers!</p>
+              <p>We&apos;re a small business based in Arizona. We spend time scouring the state to procure one of a kind, funky, vintage pieces. We also like to dabble in the handmade arts and make anything from wall decor to our comically morbid tea cups. Feel free to look around and reach out on our contact us page if you have any questions. Cheers!</p>
             </main>
           </CardContent>
         </Card>

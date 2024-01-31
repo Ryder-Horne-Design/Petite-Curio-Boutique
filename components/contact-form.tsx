@@ -69,7 +69,7 @@ export default function ContactForm() {
                 <FormControl>
                   <Input placeholder="Your email" {...field} />
                 </FormControl>
-                <FormDescription>The email you'd like us to send our response to.</FormDescription>
+                <FormDescription>The email you&apos;d like us to send our response to.</FormDescription>
                 <FormMessage />
               </FormItem>
             )} />
@@ -89,7 +89,7 @@ export default function ContactForm() {
                 <FormControl>
                   <Textarea placeholder="Your message" className="resize-none" {...field} />
                 </FormControl>
-                <FormDescription>The message you'd like for our team to see and respond to.</FormDescription>
+                <FormDescription>The message you&apos;d like for our team to see and respond to.</FormDescription>
                 <FormMessage />
               </FormItem>
             )} />

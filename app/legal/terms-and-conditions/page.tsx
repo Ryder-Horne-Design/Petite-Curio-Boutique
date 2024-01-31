@@ -14,7 +14,7 @@ export default async function Page() {
           <h3 className="text-xl">1.1 License:</h3>
           <p>We grant you a limited, non-exclusive, and revocable license to access and use our website for personal or non-commercial purposes.</p>
           <h3 className="text-xl">1.2 Prohibited Activities:</h3>
-          <p>You must not misuse the website, including but not limited to engaging in illegal activities, violating others' rights, or attempting to interfere with the functionality of the site.</p>
+          <p>You must not misuse the website, including but not limited to engaging in illegal activities, violating others&apos; rights, or attempting to interfere with the functionality of the site.</p>
         </section>
         <section>
           <h2 className="text-3xl">2. Product Information</h2>
@@ -35,7 +35,7 @@ export default async function Page() {
           <h3 className="text-xl">4.1 Shipping:</h3>
           <p>We will make reasonable efforts to deliver products in a timely manner. However, we are not responsible for delays beyond our control.</p>
           <h3 className="text-xl">4.2 Returns:</h3>
-          <p>Buyer is responsible for return shipping costs and any loss in value if an item isn't returned in original condition. Returns will only be accepted within 30 days of purchase date.</p>
+          <p>Buyer is responsible for return shipping costs and any loss in value if an item isn&apos;t returned in original condition. Returns will only be accepted within 30 days of purchase date.</p>
         </section>
         <section>
           <h2 className="text-3xl">5. Privacy</h2>
