@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import z from "zod";
 import type Stripe from "stripe";
 import { api } from "@/trpc/server";
 import ProductElement from "@/components/product-element";
@@ -15,16 +14,17 @@ async function ServerProductElement({ Product }: {
   return <ProductElement product={JSON.stringify(Product)} price={JSON.stringify(PriceInformation)} button="none" />
 };
 
+export const dynamic = "force-dynamic";
 export default async function Page({ searchParams }: {
   searchParams: {
-    [Key: string]: string | string[] | undefined,
+    [Key: string]: string,
   },
 }) {
   let Elements = 0;
 
   const UnfilteredProducts = await api.stripeRouter.getProducts.query();
   const Products = UnfilteredProducts.filter(function(Product) {
-    return searchParams.search?.length && searchParams.search!.length > 0 ? Product.name.toLowerCase().includes((searchParams.search! as string).toLowerCase()) : true;
+    return searchParams.search?.length && searchParams.search!.length > 0 ? Product.name.toLowerCase().includes(searchParams.search.toLowerCase()) : true;
   });
 
   return (
@@ -44,7 +44,6 @@ export default async function Page({ searchParams }: {
               if (Index === 0) {
                 Elements = 0;
               };
-              // if (Product.active && (Search.length === 0 || Product.name.toLowerCase().includes(Search.toLowerCase()))) {
               if (Product.active) {
                 Elements++;
                 return (
