@@ -205,8 +205,7 @@ export const stripeRouter = createTRPCRouter({
             },
           },
         ],
-        success_url: "https://www.petitecurioboutique.com/shop/checkout?purchase=true",
-        cancel_url: "https://www.petitecurioboutique.com/shop/checkout?purchase=false",
+        success_url: "https://www.petitecurioboutique.com",
       });
       return {
         success: true,
