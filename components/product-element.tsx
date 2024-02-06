@@ -23,6 +23,10 @@ export default function ProductElement({ product, price, original = 1, button }:
   const Product = JSON.parse(product) as Stripe.Product;
   const PriceInformation = JSON.parse(price || "{}") as Stripe.Price | null;
 
+  if (parseInt(Product.metadata.Stock) && parseInt(Product.metadata.Stock) < original) {
+    original = parseInt(Product.metadata.Stock);
+  };
+
   const CardRef = createRef<HTMLDivElement>();
   const InfoRef = createRef<HTMLParagraphElement>();
   const [Amount, SetAmount] = useState<number>(original);

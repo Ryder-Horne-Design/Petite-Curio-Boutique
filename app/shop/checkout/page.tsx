@@ -61,8 +61,22 @@ async function ServerCheckoutForm() {
   return ([<p className="text-2xl text-center" key="subtotal">{`Subtotal: $${Total.toFixed(2)}`}</p>, <CheckoutForm items={ProductData} measurements={Measurements} total={parseFloat(Total.toFixed(2))} key="checkout-form" />]);
 };
 
-export default function Page() {
+export default function Page({ searchParams }: {
+  searchParams: {
+    [Key: string]: string,
+  },
+}) {
   const CookieStore = cookies();
+
+  if (searchParams?.product) {
+    const Cart = JSON.parse(CookieStore.get("Cart")?.value || "{}");
+    if (Cart[searchParams.product]) {
+      Cart[searchParams.product]++;
+    } else {
+      Cart[searchParams.product] = 1;
+    };
+    CookieStore.set("Cart", JSON.stringify(Cart));
+  };
 
   return (
     <main>
