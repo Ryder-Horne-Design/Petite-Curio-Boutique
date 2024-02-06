@@ -1,6 +1,7 @@
 import "@/css/globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
@@ -182,6 +183,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html className={`scroll-smooth bg-[#2c2c2c] selection:bg-yellow-500/50 ${Chanticleer.className} ${Huntsman.variable}`} lang={locale}>
       <body className="flex flex-col min-h-screen text-white text-lg">
+        <Script defer data-domain="petitecurioboutique.com" src="https://plausible.io/js/script.js" />
         <Header />
         {children}
         <Toaster />
