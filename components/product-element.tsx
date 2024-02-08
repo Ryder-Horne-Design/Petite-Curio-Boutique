@@ -96,7 +96,7 @@ export default function ProductElement({ product, price, original = 1, button }:
               <CardTitle className="text-2xl text-start">{Product.name}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap gap-4 justify-center items-center text-start">
-              <Image src={Product.images[0]} alt={`Image for ${Product.name}`} width={250} height={250} sizes="(min-width: 1024px) 50vw, 100vw" className="rounded-2xl object-cover max-h-56 basis-full sm:basis-1/2" />
+              <Image src={Product.images[0]} alt={`Image for ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover max-h-56 basis-full sm:basis-1/2" />
               <main className="basis-full sm:basis-1/2">
                 <p>{Product.description ? Product.description : "No description provided."}</p>
                 <p>{`$${Price}`}</p>
@@ -112,7 +112,7 @@ export default function ProductElement({ product, price, original = 1, button }:
               <CardTitle className="text-2xl text-start">{Product.name}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap gap-4 justify-center items-center text-start">
-              <ExpandableImage src={Product.images[0]} alt={`Image for ${Product.name}`} width={250} height={250} sizes="(min-width: 1024px) 50vw, 100vw" className="rounded-2xl object-cover max-h-56" buttonClassName="basis-full sm:basis-1/2" />
+              <ExpandableImage src={Product.images[0]} alt={`Image for ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover max-h-56" buttonClassName="basis-full sm:basis-1/2" />
               <main className="basis-full sm:basis-1/2">
                 <p>{Product.description ? Product.description : "No description provided."}</p>
                 <p>{`$${(Price * Amount).toFixed(2).toString()}`}</p>
@@ -151,7 +151,7 @@ export default function ProductElement({ product, price, original = 1, button }:
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap gap-4 justify-center items-center text-start">
-              <ExpandableImage src={Product.images[0]} alt={`Image for ${Product.name}`} width={250} height={250} sizes="(min-width: 1024px) 50vw, 100vw" className="rounded-2xl object-cover max-h-56" buttonClassName="basis-full sm:basis-1/2" />
+              <ExpandableImage src={Product.images[0]} alt={`Image for ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover max-h-56" buttonClassName="basis-full sm:basis-1/2" />
               <main className="basis-full sm:basis-1/2">
                 <p>{Product.description ? Product.description : "No description provided."}</p>
                 <p>{`$${(Price * Amount).toFixed(2).toString()}`}</p>
