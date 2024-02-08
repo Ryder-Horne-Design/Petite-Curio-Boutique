@@ -69,7 +69,7 @@ export default function CheckoutForm({ items, measurements, total }: {
         title: "Creating checkout session...",
         description: "Please wait while we create your checkout session.",
       });
-      const Checkout = await CreateCheckoutSession({
+      const Checkout = JSON.parse(await CreateCheckoutSession({
         items,
         country: Data.country,
         zip: Data.zip,
@@ -80,7 +80,7 @@ export default function CheckoutForm({ items, measurements, total }: {
         al2: Data.al2,
         state: Data.state,
         total,
-      });
+      }));
       if (Checkout.success) {
         toast({
           title: "Success",

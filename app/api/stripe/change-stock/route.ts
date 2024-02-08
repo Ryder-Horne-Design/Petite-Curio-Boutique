@@ -27,7 +27,7 @@ async function FullfillOrder(Session: Stripe.Checkout.Session) {
 
   for (const Item of Items) {
     const ProductData = await StripeAPI.products.retrieve(Item.price!.product as string);
-    await StripeAPI.products.update(Item.id, {
+    await StripeAPI.products.update(Item.price!.product as string, {
       metadata: {
         Stock: (parseInt(ProductData.metadata.Stock) - Item.quantity!).toString(),
       },
@@ -54,7 +54,7 @@ export async function POST(Request: NextRequest) {
         await FullfillOrder(Data);
         break;
       default:
-        console.log(`Unhandled event type ${Event.type}`);
+        break;
     };
   } catch(Err) {
     console.warn(`Webhook error: ${Err instanceof Stripe.errors.StripeSignatureVerificationError ? Err.message : Err}`);

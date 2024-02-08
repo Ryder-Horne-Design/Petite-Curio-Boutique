@@ -18,7 +18,7 @@ export async function POST(Request: NextRequest) {
 
     switch (Event.type) {
       default:
-        console.log(`Unhandled event type ${Event.type}`);
+        break;
     };
   } catch(Err) {
     console.warn(`Webhook error: ${Err instanceof Stripe.errors.StripeSignatureVerificationError ? Err.message : Err}`);

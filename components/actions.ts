@@ -9,10 +9,10 @@ export async function Revalidate(Path: string, Type: "page" | "layout" = "page")
 
 export async function CreateCheckoutSession(Input: typeof api.stripeRouter.createCheckoutSession.query.arguments) {
   const Response = await api.stripeRouter.createCheckoutSession.query(Input);
-  return Response;
+  return JSON.stringify(Response);
 };
 
 export async function SendEmail(Input: typeof api.emailRouter.sendEmail.query.arguments) {
   const Response = await api.emailRouter.sendEmail.query(Input);
-  return Response;
+  return JSON.stringify(Response);
 };

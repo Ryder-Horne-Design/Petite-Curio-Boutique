@@ -34,11 +34,11 @@ export default function ContactForm() {
       title: "Sending Contact Form",
       description: "Please wait while we send your contact form data to our team.",
     });
-    const EmailResponse = await SendEmail({
+    const EmailResponse = JSON.parse(await SendEmail({
       email: Data.email,
       subject: Data.subject,
       message: Data.message,
-    });
+    }));
     if (EmailResponse.success) {
       toast({
         title: "Contact Form Successfully Sent!",
