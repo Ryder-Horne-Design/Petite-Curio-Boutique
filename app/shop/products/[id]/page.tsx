@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { api } from "@/trpc/server";
 import ProductElement from "@/components/product-element";
 import LinkButton from "@/components/link-button";
-import { api } from "@/trpc/server";
-import { cookies } from "next/headers";
+import PageHeader from "@/components/page-header";
 
 export default async function Page({ params }: {params: {
   id: string,
@@ -12,9 +12,9 @@ export default async function Page({ params }: {params: {
     const Product = await api.stripeRouter.getProductInformation.query({ productId: `prod_${params.id}` });
     return (
       <main>
-        <header className="relative text-center before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:h-full before:w-full before:-z-[1] before:shop-bg-image before:brightness-50 p-4 min-[300px]:p-12 md:p-24">
-          <h1 className="text-7xl">Shop</h1>
-        </header>
+        <PageHeader src="/images/shop.png" alt="Shop background image">
+          <h1 className="text-4xl sm:text-7xl">Shop</h1>
+        </PageHeader>
         <main className="p-8">
           <Suspense fallback={
             <p>Loading product...</p>

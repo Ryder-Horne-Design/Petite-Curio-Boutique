@@ -1,15 +1,16 @@
 import LinkButton from "@/components/link-button";
+import PageHeader from "@/components/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
-      <header className="relative before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:h-full before:w-full before:-z-[1] before:shop-bg-image before:brightness-50 p-4 min-[300px]:p-12 md:p-24">
+      <PageHeader className="text-start" src="/images/shop.png" alt="Shop background image">
         <h1 className="text-4xl mb-2">Home of Nostalgia</h1>
         <p className="text-xl mb-4">Selling vintage pieces that send you back to your childhood & fond memories of yesteryear. Occasionally making things that fit my fancy.</p>
         <LinkButton href="/shop" textContent="Shop Now" />
-      </header>
+      </PageHeader>
       <section className="p-4">
         <Card>
           <CardHeader>
@@ -24,12 +25,12 @@ export default function Home() {
           </CardContent>
         </Card>
       </section>
-      <section className="relative before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:h-full before:w-full before:-z-[1] before:contact-bg-image before:brightness-50 p-4 min-[300px]:p-12 md:p-24">
+      <PageHeader className="text-start" src="/images/contact.png" alt="Contact Us background image">
         <h2 className="text-4xl mb-2">What if I need to contact you?</h2>
         <p className="text-xl mb-2">If you ever need to contact us for any reason, whether you have a question about our business or have feedback about one (or multiple!) of our items, do not fret!</p>
         <p className="text-xl mb-4">You can easily contact us using our contact us page.</p>
         <LinkButton href="/contact-us" textContent="Contact Us" />
-      </section>
+      </PageHeader>
       <footer className="p-4">
         <Card>
           <CardHeader>

@@ -1,9 +1,11 @@
+import PageHeader from "@/components/page-header";
+
 export default async function Page() {
   return (
     <main>
-      <header className="relative text-center before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:h-full before:w-full before:-z-[1] before:shop-bg-image before:brightness-50 p-4 min-[300px]:p-12 md:p-24">
-        <h1 className="text-7xl">Privacy Policy</h1>
-      </header>
+      <PageHeader src="/images/shop.png" alt="Shop background image">
+        <h1 className="text-4xl sm:text-7xl">Privacy Policy</h1>
+      </PageHeader>
       <main className="flex flex-col flex-wrap justify-center p-8 gap-4">
         <header>
           <p>Last Updated: January 31st, 2024</p>
