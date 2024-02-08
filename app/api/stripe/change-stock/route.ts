@@ -43,7 +43,7 @@ export async function POST(Request: NextRequest) {
   const Signature = Request.headers.get("Stripe-Signature");
 
   try {
-    const Event = await StripeAPI.webhooks.constructEventAsync(Body, Signature!, process.env.STRIPE_WEBHOOK!);
+    const Event = await StripeAPI.webhooks.constructEventAsync(Body, Signature!, process.env.STRIPE_STOCK_WEBHOOK!);
     const Data = Event.data.object as Stripe.Checkout.Session;
 
     switch (Event.type) {
