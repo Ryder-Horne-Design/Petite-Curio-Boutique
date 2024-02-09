@@ -2,6 +2,8 @@ import { api } from "@/trpc/server";
 import { MetadataRoute } from "next";
 
 const BaseUrl = "https://www.petitecurioboutique.com";
+
+export const dynamic = "force-dynamic";
 export default async function Sitemap(): Promise<MetadataRoute.Sitemap> {
   const Urls: MetadataRoute.Sitemap = [
     {
