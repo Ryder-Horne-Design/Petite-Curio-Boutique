@@ -9,7 +9,7 @@ export const metadata = {
   openGraph: {
     title: `${title} - Petite Curio Boutique`,
     description,
-    url,
+    url: `${url}/legal/privacy-policy`,
     siteName: "Petite Curio Boutique",
     images: [
       {

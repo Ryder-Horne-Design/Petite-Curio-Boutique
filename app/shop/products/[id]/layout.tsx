@@ -9,10 +9,10 @@ export async function generateMetadata({ params }: {
   try {
     const product = await api.stripeRouter.getProductInformation.query({ productId: `prod_${params.id}` });
 
-    const title = product.name!;
+    const title = product.name;
     const description = product.description || "No description provided.";
     const locale = "en";
-    const url = `https://petitecurioboutique.com/shop/products/${params.id}`;
+    const url = "https://www.petitecurioboutique.com";
 
     return {
       metadataBase: new URL(url),
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: {
       openGraph: {
         title: `${title} - Petite Curio Boutique`,
         description,
-        url,
+        url: `${url}/shop/products/${params.id}`,
         siteName: "Petite Curio Boutique",
         images: [
           {

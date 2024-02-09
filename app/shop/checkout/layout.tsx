@@ -1,6 +1,6 @@
 const url = "https://www.petitecurioboutique.com";
 const title = "Checkout";
-const description = "Checkout your vintage items here.";
+const description = "Found everything you need? Then checkout your vintage goods now!";
 const locale = "en";
 export const metadata = {
   metadataBase: new URL(url),
@@ -9,7 +9,7 @@ export const metadata = {
   openGraph: {
     title: `${title} - Petite Curio Boutique`,
     description,
-    url,
+    url: `${url}/shop/checkout`,
     siteName: "Petite Curio Boutique",
     images: [
       {

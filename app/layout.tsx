@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 const url = "https://www.petitecurioboutique.com";
 const title = "Petite Curio Boutique";
-const description = "Selling vintage pieces that send you back to your childhood & fond memories of yesteryear. Occasionally making things that fit my fancy.";
+const description = "Selling vintage goods that send you back to your childhood & fond memories of yesteryear. Occasionally making things that fit my fancy.";
 const locale = "en";
 export const metadata: Metadata = {
   metadataBase: new URL(url),
