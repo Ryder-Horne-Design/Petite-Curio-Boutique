@@ -107,12 +107,13 @@ export function ExpandImage(Event: MouseEvent<HTMLButtonElement>, Source: string
   };
 };
 
-export default function ExpandableImage({ src, alt, width, height, sizes, priority = false, className, buttonClassName }: {
+export default function ExpandableImage({ src, alt, width, height, sizes, loading = "lazy", priority = false, className, buttonClassName }: {
   src: string,
   alt: string,
   width: number,
   height: number,
   sizes: string,
+  loading?: "lazy" | "eager",
   priority?: boolean,
   className?: string,
   buttonClassName?: string
@@ -121,7 +122,7 @@ export default function ExpandableImage({ src, alt, width, height, sizes, priori
     <button onClick={function(Event) {
       ExpandImage(Event, src);
     }} className={cn("object-cover overflow-hidden w-full lg:h-full", buttonClassName)} aria-label="Expand image">
-      <Image sizes={sizes} src={src} alt={alt} width={width} height={height} className={cn("object-cover h-full w-full", className)} priority={priority} />
+      <Image sizes={sizes} src={src} alt={alt} width={width} height={height} className={cn("object-cover h-full w-full", className)} loading={loading} priority={priority} />
     </button>
   );
 };

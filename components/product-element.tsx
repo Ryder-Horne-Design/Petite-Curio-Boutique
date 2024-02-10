@@ -121,7 +121,7 @@ export default function ProductElement({ product, price, original = 1, button }:
 
                       return (
                         <CarouselItem className="basis-full" key={Image}>
-                          <ExpandableImage src={Image} alt={ImageAlts && ImageAlts[Index] ? ImageAlts[Index] : `Image ${Index + 1} of ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover" buttonClassName="w-full" />
+                          <ExpandableImage src={Image} alt={ImageAlts && ImageAlts[Index] ? ImageAlts[Index] : `Image ${Index + 1} of ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover" buttonClassName="w-full" loading="eager" priority={Index === 0} />
                         </CarouselItem>
                       );
                     })
@@ -176,7 +176,7 @@ export default function ProductElement({ product, price, original = 1, button }:
 
                       return (
                         <CarouselItem className="basis-full" key={Image}>
-                          <ExpandableImage src={Image} alt={ImageAlts && ImageAlts[Index] ? ImageAlts[Index] : `Image ${Index + 1} of ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover" buttonClassName="w-full" />
+                          <ExpandableImage src={Image} alt={ImageAlts && ImageAlts[Index] ? ImageAlts[Index] : `Image ${Index + 1} of ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover" buttonClassName="w-full" loading="eager" />
                         </CarouselItem>
                       );
                     })
