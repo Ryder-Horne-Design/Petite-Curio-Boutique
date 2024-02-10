@@ -13,6 +13,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Revalidate } from "@/components/actions";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 
 export default function ProductElement({ product, price, original = 1, button }: {
   product: string,
@@ -95,8 +96,8 @@ export default function ProductElement({ product, price, original = 1, button }:
             <CardHeader>
               <CardTitle className="text-2xl text-start">{Product.name}</CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap gap-4 justify-center items-center text-start">
-              <Image src={Product.images[0]} alt={`Image for ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover max-h-56 basis-full sm:basis-1/2" />
+            <CardContent className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap gap-4 justify-center text-start">
+              <Image src={Product.images[0]} alt={`Image for ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover basis-full sm:basis-1/2" />
               <main className="basis-full sm:basis-1/2">
                 <p>{Product.description ? Product.description : "No description provided."}</p>
                 <p>{`$${Price}`}</p>
@@ -112,7 +113,23 @@ export default function ProductElement({ product, price, original = 1, button }:
               <CardTitle className="text-2xl text-start">{Product.name}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap gap-4 justify-center items-center text-start">
-              <ExpandableImage src={Product.images[0]} alt={`Image for ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover max-h-56" buttonClassName="basis-full sm:basis-1/2" />
+              <Carousel className="basis-full sm:basis-1/2">
+                <CarouselContent className="w-full items-center">
+                  {
+                    Product.images.map(function(Image, Index) {
+                      const ImageAlts = JSON.parse(Product.metadata.ImageAlts || "[]");
+
+                      return (
+                        <CarouselItem className="basis-full" key={Image}>
+                          <ExpandableImage src={Image} alt={ImageAlts && ImageAlts[Index] ? ImageAlts[Index] : `Image ${Index + 1} of ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover" buttonClassName="w-full" />
+                        </CarouselItem>
+                      );
+                    })
+                  }
+                </CarouselContent>
+                {Product.images.length > 1 ? <CarouselPrevious /> : ""}
+                {Product.images.length > 1 ? <CarouselNext /> : ""}
+              </Carousel>
               <main className="basis-full sm:basis-1/2">
                 <p>{Product.description ? Product.description : "No description provided."}</p>
                 <p>{`$${(Price * Amount).toFixed(2).toString()}`}</p>
@@ -151,7 +168,23 @@ export default function ProductElement({ product, price, original = 1, button }:
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap gap-4 justify-center items-center text-start">
-              <ExpandableImage src={Product.images[0]} alt={`Image for ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover max-h-56" buttonClassName="basis-full sm:basis-1/2" />
+            <Carousel className="basis-full sm:basis-1/2">
+                <CarouselContent className="w-full items-center">
+                  {
+                    Product.images.map(function(Image, Index) {
+                      const ImageAlts = JSON.parse(Product.metadata.ImageAlts || "[]");
+
+                      return (
+                        <CarouselItem className="basis-full" key={Image}>
+                          <ExpandableImage src={Image} alt={ImageAlts && ImageAlts[Index] ? ImageAlts[Index] : `Image ${Index + 1} of ${Product.name}`} width={1000} height={1000} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl object-cover" buttonClassName="w-full" />
+                        </CarouselItem>
+                      );
+                    })
+                  }
+                </CarouselContent>
+                {Product.images.length > 1 ? <CarouselPrevious /> : ""}
+                {Product.images.length > 1 ? <CarouselNext /> : ""}
+              </Carousel>
               <main className="basis-full sm:basis-1/2">
                 <p>{Product.description ? Product.description : "No description provided."}</p>
                 <p>{`$${(Price * Amount).toFixed(2).toString()}`}</p>

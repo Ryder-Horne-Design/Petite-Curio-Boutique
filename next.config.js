@@ -1,5 +1,5 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+/** @type {import("next").NextConfig} */
+const Config = {
   images: {
     remotePatterns: [
       {
@@ -39,19 +39,12 @@ const nextConfig = {
         destination: "/#legal",
         permanent: true,
       },
-      {
-        source: "/shop/purchase-successful",
-        destination: "/shop/checkout?purchase=true",
-        permanent: true,
-      },
-      {
-        source: "/shop/purchase-canceled",
-        destination: "/shop/checkout?purchase=false",
-        permanent: true,
-      },
     ];
+  },
+  env: {
+    NEXT_PUBLIC_BUILD_DATE: new Date().toISOString(),
   },
   reactStrictMode: true,
 };
 
-module.exports = nextConfig
+module.exports = Config;
