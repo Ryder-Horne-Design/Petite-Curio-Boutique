@@ -67,7 +67,7 @@ async function Reviews() {
 
     return Array.from(AllReviews).map(function(Review) {
       return (
-        <Card>
+        <Card key={`${Review.created_timestamp}_${Review.updated_timestamp}_${Review.reviewer}`}>
           <CardHeader>
             <main className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap justify-center sm:justify-between items-center">
               <main className="flex justify-center items-center gap-2">
