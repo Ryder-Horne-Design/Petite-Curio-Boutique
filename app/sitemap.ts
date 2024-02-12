@@ -19,6 +19,12 @@ export default async function Sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${BaseUrl}/reviews`,
+      lastModified: BuildDate,
+      changeFrequency: "always",
+      priority: 0.8,
+    },
     // {
     //   url: `${BaseUrl}/blog`,
     //   lastModified: BuildDate,
