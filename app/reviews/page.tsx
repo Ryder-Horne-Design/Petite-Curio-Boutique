@@ -60,7 +60,7 @@ async function Reviews() {
         };
       } else {
         console.warn("Etsy router returned successful for reviews but returned no reviews.");
-      }
+      };
     } else {
       console.warn("Error fetching reviews from Etsy.");
     };

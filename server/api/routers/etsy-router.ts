@@ -66,8 +66,12 @@ export const etsyRouter = createTRPCRouter({
       });
       if (!response.ok) {
         if (response.status === 401) {
-          const newAccess = await fetch(`https://api.etsy.com/v3/public/oauth/token?grant_type=refresh_token&client_id=${process.env.ETSY_KEY!}&refresh_token=${process.env.ETSY_REFRESH!}`, {
+          const newAccess = await fetch("https://api.etsy.com/v3/public/oauth/token", {
             method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `grant_type=refresh_token&client_id=${process.env.ETSY_KEY!}&refresh_token=${process.env.ETSY_REFRESH!}`,
           });
           if (newAccess.ok) {
             const data = await newAccess.json();
