@@ -17,6 +17,9 @@ export default function Footer() {
           <Link href="/shop" className="flex items-center gap-1 group max-w-fit">
             <p className="inline-block leading-none relative transition-[text-shadow] duration-300 motion-reduce:duration-0 group-hover:[text-shadow:0_0_5px_white] group-focus-visible:[text-shadow:0_0_5px_white] after:w-full after:h-0.5 after:rounded-full after:absolute after:left-0 after:bottom-0 after:bg-white after:scale-x-0 after:transition-transform after:duration-300 motion-reduce:after:duration-0 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100">Shop</p>
           </Link>
+          <Link href="/reviews" className="flex items-center gap-1 group max-w-fit">
+            <p className="inline-block leading-none relative transition-[text-shadow] duration-300 motion-reduce:duration-0 group-hover:[text-shadow:0_0_5px_white] group-focus-visible:[text-shadow:0_0_5px_white] after:w-full after:h-0.5 after:rounded-full after:absolute after:left-0 after:bottom-0 after:bg-white after:scale-x-0 after:transition-transform after:duration-300 motion-reduce:after:duration-0 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100">Reviews</p>
+          </Link>
           <Link href="/contact-us" className="flex items-center gap-1 group max-w-fit">
             <p className="inline-block leading-none relative transition-[text-shadow] duration-300 motion-reduce:duration-0 group-hover:[text-shadow:0_0_5px_white] group-focus-visible:[text-shadow:0_0_5px_white] after:w-full after:h-0.5 after:rounded-full after:absolute after:left-0 after:bottom-0 after:bg-white after:scale-x-0 after:transition-transform after:duration-300 motion-reduce:after:duration-0 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100">Contact Us</p>
           </Link>

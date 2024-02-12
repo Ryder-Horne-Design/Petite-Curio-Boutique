@@ -64,7 +64,7 @@ async function Reviews() {
     } else {
       console.warn("Error fetching reviews from Etsy.");
     };
-    console.log(AllReviews);
+
     return Array.from(AllReviews).map(function(Review) {
       return (
         <Card>

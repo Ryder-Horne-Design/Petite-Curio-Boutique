@@ -29,6 +29,7 @@ export default function Header() {
       <nav className="hidden sm:flex justify-center items-center divide-x">
         <HeaderLink href="/">Home</HeaderLink>
         <HeaderLink href="/shop">Shop</HeaderLink>
+        <HeaderLink href="/reviews">Reviews</HeaderLink>
         <HeaderLink href="/contact-us">Contact Us</HeaderLink>
         <HeaderLink href="/checkout" linkChildren={
           <svg className="inline-block h-5 fill-white" role="presentation" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
@@ -63,6 +64,11 @@ export default function Header() {
             NavRef.current.classList.add("translate-x-full");
           };
         }}>Shop</HeaderLink>
+        <HeaderLink href="/reviews" onClick={function() {
+          if (NavRef.current) {
+            NavRef.current.classList.add("translate-x-full");
+          };
+        }}>Reviews</HeaderLink>
         <HeaderLink href="/contact-us" onClick={function() {
           if (NavRef.current) {
             NavRef.current.classList.add("translate-x-full");
