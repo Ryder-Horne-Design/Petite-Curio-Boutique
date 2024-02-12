@@ -8,6 +8,12 @@ const Config = {
         port: "",
         pathname: "/links/**",
       },
+      {
+        protocol: "https",
+        hostname: "i.etsystatic.com",
+        port: "",
+        pathname: "/iusa/**",
+      },
     ],
   },
   async redirects() {

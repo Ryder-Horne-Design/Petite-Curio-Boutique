@@ -36,7 +36,7 @@ export default function Footer() {
           </a>
         </nav>
       </main>
-      <aside className="mt-2 flex flex-col flex-wrap sm:flex-row sm:flex-nowrap justify-center items-center text-sm divide-y sm:divide-y-0 sm:divide-x text-white/50 divide-white/50" id="#legal">
+      <aside className="mt-2 flex flex-col flex-wrap sm:flex-row sm:flex-nowrap justify-center items-center text-sm divide-y sm:divide-y-0 sm:divide-x text-white/50 divide-white/50" id="legal">
         <a href="/legal/privacy-policy" className="px-2">Privacy Policy</a>
         <p className="px-2">Copyright &copy; {new Date().getFullYear()} Petite Curio Boutique LLC. All Rights Reserved.</p>
         <a href="/legal/terms-and-conditions" className="px-2">Terms and Conditions</a>

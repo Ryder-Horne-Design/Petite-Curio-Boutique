@@ -1,6 +1,6 @@
 const url = "https://www.petitecurioboutique.com";
-const title = "Terms and Conditions";
-const description = "Learn about the terms and conditions of using and purchasing products on our website.";
+const title = "Reviews";
+const description = "Find out what people are saying about us.";
 const locale = "en";
 export const metadata = {
   metadataBase: new URL(url),
@@ -9,7 +9,7 @@ export const metadata = {
   openGraph: {
     title: `${title} - Petite Curio Boutique`,
     description,
-    url: `${url}/legal/terms-and-conditions`,
+    url: `${url}/shop/checkout`,
     siteName: "Petite Curio Boutique",
     images: [
       {
@@ -38,15 +38,11 @@ export const metadata = {
     creatorId: "1685799534482636801",
   },
   alternates: {
-    canonical: "/legal/terms-and-conditions",
+    canonical: "/reviews",
     languages: {
-      "en": "/legal/terms-and-conditions",
-      // "fr": "/fr/legal/terms-and-conditions",
+      "en": "/reviews",
+      // "fr": "/fr/reviews",
     },
-  },
-  robots: {
-    index: false,
-    follow: true,
   },
 };
 

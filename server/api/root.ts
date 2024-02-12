@@ -1,5 +1,6 @@
 import { stripeRouter } from "./routers/stripe-router";
 import { emailRouter } from "./routers/email-router";
+import { etsyRouter } from "./routers/etsy-router";
 import { createTRPCRouter } from "./trpc";
 
 /**
@@ -10,6 +11,7 @@ import { createTRPCRouter } from "./trpc";
 export const appRouter = createTRPCRouter({
   stripeRouter,
   emailRouter,
+  etsyRouter,
 });
 
 // export type definition of API

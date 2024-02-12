@@ -6,18 +6,6 @@ import LinkButton from "@/components/link-button";
 import CheckoutForm from "@/components/checkout-form";
 import PageHeader from "@/components/page-header";
 
-async function ServerProductElement({ id, original }: {
-  id: string,
-  original: number,
-}) {
-  const Product = await api.stripeRouter.getProductInformation.query({
-    productId: id,
-  });
-  const Price = await api.stripeRouter.getPriceInformation.query({
-    priceId: Product.default_price as string,
-  });
-  return <ProductElement product={JSON.stringify(Product)} price={JSON.stringify(Price)} original={original} button="delete" />;
-};
 async function ServerCheckoutForm() {
   const CookieStore = cookies();
 
@@ -90,11 +78,10 @@ export default function Page({ searchParams }: {
         }>
           {
             CookieStore.get("Cart")?.value && Object.keys(JSON.parse(CookieStore.get("Cart")!.value)).length > 0 ? Object.keys(JSON.parse(CookieStore.get("Cart")!.value)).map(function(Id: string, Index: number) {
-              const Quantity = JSON.parse(CookieStore.get("Cart")!.value)[Id];
               if (Index === Object.keys(JSON.parse(CookieStore.get("Cart")!.value)).length - 1) {
-                return ([<ServerProductElement id={Id} original={Quantity} key={Id} />, <ServerCheckoutForm key="server-checkout-form" />]);
+                return ([<ProductElement productId={Id} button="delete" key={Id} />, <ServerCheckoutForm key="server-checkout-form" />]);
               };
-              return <ServerProductElement id={Id} original={Quantity} key={Id} />;
+              return <ProductElement productId={Id} button="delete" key={Id} />;
             }) : <>
               <p className="text-xl mb-2">No products were found in your cart.</p>
               <LinkButton href="/shop" textContent="Go to Shop" />

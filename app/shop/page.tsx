@@ -6,15 +6,6 @@ import ProductElement from "@/components/product-element";
 import SearchForm from "@/components/search-form";
 import PageHeader from "@/components/page-header";
 
-async function ServerProductElement({ Product }: {
-  Product: Stripe.Product,
-}) {
-  const PriceInformation = await api.stripeRouter.getPriceInformation.query({
-    priceId: Product.default_price as string,
-  });
-  return <ProductElement product={JSON.stringify(Product)} price={JSON.stringify(PriceInformation)} button="none" />
-};
-
 export const dynamic = "force-dynamic";
 export default async function Page({ searchParams }: {
   searchParams: {
@@ -49,7 +40,7 @@ export default async function Page({ searchParams }: {
                 Elements++;
                 return (
                   <Link href={`/shop/products/${Product.id.replace("prod_", "")}`} key={Product.id.replace("prod_", "")}>
-                    <ServerProductElement Product={Product} />
+                    <ProductElement productId={Product.id} button="none" />
                   </Link>
                 );
               } else if (Index === Products.length - 1 && Elements === 0) {

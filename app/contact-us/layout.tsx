@@ -38,10 +38,10 @@ export const metadata = {
     creatorId: "1685799534482636801",
   },
   alternates: {
-    canonical: "/shop/checkout",
+    canonical: "/contact-us",
     languages: {
-      "en": "/shop/checkout",
-      // "fr": "/fr/shop/checkout",
+      "en": "/contact-us",
+      // "fr": "/fr/contact-us",
     },
   },
 };
