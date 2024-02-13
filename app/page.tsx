@@ -25,7 +25,7 @@ export default function Home() {
           </CardContent>
         </Card>
       </section>
-      <PageHeader className="text-start" src="/images/contact.png" alt="Contact Us background image">
+      <PageHeader className="text-start" src="/images/contact.png" alt="Contact Us background image" priority={false}>
         <h2 className="text-4xl mb-2">What if I need to contact you?</h2>
         <p className="text-xl mb-2">If you ever need to contact us for any reason, whether you have a question about our business or have feedback about one (or multiple!) of our items, do not fret!</p>
         <p className="text-xl mb-4">You can easily contact us using our contact us page.</p>
