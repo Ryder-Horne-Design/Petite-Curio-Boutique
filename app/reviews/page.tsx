@@ -71,7 +71,7 @@ async function Reviews() {
           <CardHeader>
             <main className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap justify-center sm:justify-between items-center">
               <main className="flex justify-center items-center gap-2">
-                <Image src={Review.reviewer_pfp} alt={`${Review.reviewer}'s Profile Picture`} height={500} width={500} sizes="(min-width: 768px) 10vw, 20vw" className="h-8 w-8 aspect-square rounded-full" />
+                <Image src={Review.reviewer_pfp} alt={`${Review.reviewer}'s Profile Picture`} height={500} width={500} sizes="2rem" className="h-8 w-8 aspect-square rounded-full" />
                 <CardTitle>{Review.reviewer}</CardTitle>
               </main>
               <aside className="flex flex-col items-end">
