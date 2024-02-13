@@ -40,6 +40,7 @@ export const metadata = {
   alternates: {
     canonical: "/reviews",
     languages: {
+      "x-default": "/reviews",
       "en": "/reviews",
       // "fr": "/fr/reviews",
     },

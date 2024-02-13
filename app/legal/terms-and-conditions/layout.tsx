@@ -40,6 +40,7 @@ export const metadata = {
   alternates: {
     canonical: "/legal/terms-and-conditions",
     languages: {
+      "x-default": "/legal/terms-and-conditions",
       "en": "/legal/terms-and-conditions",
       // "fr": "/fr/legal/terms-and-conditions",
     },

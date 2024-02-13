@@ -40,6 +40,7 @@ export const metadata = {
   alternates: {
     canonical: "/contact-us",
     languages: {
+      "x-default": "/contact-us",
       "en": "/contact-us",
       // "fr": "/fr/contact-us",
     },

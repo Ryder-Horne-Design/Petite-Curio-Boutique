@@ -52,6 +52,7 @@ export async function generateMetadata({ params }: {
       alternates: {
         canonical: `/shop/products/${params.id}`,
         languages: {
+          "x-default": `/shop/products/${params.id}`,
           "en": `/shop/products/${params.id}`,
           // "fr": `/fr/shop/products/${params.id}`,
         },

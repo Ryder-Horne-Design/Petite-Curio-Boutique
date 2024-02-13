@@ -40,6 +40,7 @@ export const metadata = {
   alternates: {
     canonical: "/legal/privacy-policy",
     languages: {
+      "x-default": "/legal/privacy-policy",
       "en": "/legal/privacy-policy",
       // "fr": "/fr/legal/privacy-policy",
     },
